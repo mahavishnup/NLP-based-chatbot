@@ -1,5 +1,4 @@
 node_modules
-.idea
 config/dev.js
 
 debug.log
