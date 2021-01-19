@@ -2,7 +2,6 @@ node_modules
 config/dev.js
 
 debug.log
-README.md
 
 yarn.lock
 npm-debug.log*
