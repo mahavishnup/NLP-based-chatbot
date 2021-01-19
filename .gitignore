@@ -3,6 +3,7 @@ config/dev.js
 
 debug.log
 
+package-lock.json
 yarn.lock
 npm-debug.log*
 yarn-debug.log*
