@@ -1,3 +1,6 @@
+
+import "./card.css";
+
 import React, { Component } from 'react';
 import axios from "axios/index";
 import { withRouter } from 'react-router-dom';
@@ -10,7 +13,6 @@ import Card from './Card';
 import QuickReplies from './QuickReplies';
 
 const configkey = require("../../config/keys");
-
 const cookies = new Cookies();
 
 class Chatbot extends Component {
@@ -211,20 +213,37 @@ class Chatbot extends Component {
             && message.msg.payload
             && message.msg.payload.cards) { //message.msg.payload.fields.cards.listValue.values
 
-            return <div key={i}>
-                <div className="card-panel grey lighten-5 z-depth-1">
-                    <div style={{overflow: 'hidden'}}>
-                        <div className="col s2">
-                            <a href="/" className="btn-floating btn-large waves-effect waves-light red">{message.speaks}</a>
-                        </div>
-                        <div style={{ overflow: 'auto', overflowY: 'scroll'}}>
-                            <div style={{ height: 300, width:message.msg.payload.cards.length * 270}}>
-                                {this.renderCards(message.msg.payload.cards)}
-                            </div>
-                        </div>
+            return (
+              <div key={i}>
+                <div className="card-panel">
+                  <div style={{ overflow: "hidden" }}>
+                    <div className="col s2">
+                      <a
+                        href="/"
+                        className="btn-floating btn-large waves-effect waves-light red"
+                      >
+                        {message.speaks}
+                      </a>
                     </div>
+                    <div
+                      style={{
+                        overflow: "auto",
+                        overflowY: "scroll"
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: 300,
+                          width: message.msg.payload.cards.length * 270,
+                        }}
+                      >
+                        {this.renderCards(message.msg.payload.cards)}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+            );
         } else if (message.msg &&
             message.msg.payload &&
             message.msg.payload.quick_replies
@@ -259,28 +278,67 @@ class Chatbot extends Component {
     render() {
         if (this.state.showBot) {
             return (
-                <div style={{ minHeight: 500, maxHeight: 470, width:400, position: 'absolute', bottom: 0, right: 0}}>
-                    <nav>
-                        <div className="nav-wrapper">
-                            <a href="/" className="brand-logo">ChatBot</a>
-                            <ul id="nav-mobile" className="right hide-on-med-and-down">
-                                <li><a href="/" onClick={this.hide}>Close</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+              <div
+                style={{
+                  minHeight: 500,
+                  maxHeight: 470,
+                  width: 400,
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                }}
+              >
+                <nav>
+                  <div className="nav-wrapper">
+                    <a href="/" className="brand-logo">
+                      ChatBot
+                    </a>
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
+                      <li>
+                        <a href="/" onClick={this.hide}>
+                          Close
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
 
-                    <div id="chatbot"  style={{ minHeight: 388, maxHeight: 388, width:'100%', overflow: 'auto'}}>
-
-                        {this.renderMessages(this.state.messages)}
-                        <div ref={(el) => { this.messagesEnd = el; }}
-                             style={{ float:"left", clear: "both" }}>
-                        </div>
-                    </div>
-                    <div className=" col s12" >
-                        <input style={{margin: 0, paddingLeft: '1%', paddingRight: '1%', width: '98%'}} ref={(input) => { this.talkInput = input; }} placeholder="type a message:"  onKeyPress={this._handleInputKeyPress} id="user_says" type="text" />
-                    </div>
-
+                <div
+                  id="chatbot"
+                  style={{
+                    minHeight: 388,
+                    maxHeight: 388,
+                    width: "100%",
+                    overflow: "auto",
+                  }}
+                >
+                  {this.renderMessages(this.state.messages)}
+                  <div
+                    ref={(el) => {
+                      this.messagesEnd = el;
+                    }}
+                    style={{ float: "left", clear: "both" }}
+                  ></div>
                 </div>
+                <div className=" col s12">
+                  <input
+                    style={{
+                      margin: 0,
+                      paddingLeft: "1%",
+                      paddingRight: "1%",
+                      width: "98%",
+                      color: "#C9D1D9",
+                    }}
+                    ref={(input) => {
+                      this.talkInput = input;
+                    }}
+                    placeholder="type a message:"
+                    onKeyPress={this._handleInputKeyPress}
+                    id="user_says"
+                    type="text"
+                  />
+                </div>
+              </div>
             );
         } else {
             return (
