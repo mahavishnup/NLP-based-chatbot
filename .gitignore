@@ -1,6 +1,6 @@
 node_modules
 config/dev.js
-
+client/src/config/dev.js
 debug.log
 
 package-lock.json
@@ -11,7 +11,6 @@ yarn-error.log*
 _logs
 .npm
 
-client/src/config/dev.js
 # misc
 .DS_Store
 .env.local

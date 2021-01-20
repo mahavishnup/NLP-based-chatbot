@@ -1,5 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+src/config/dev.js
 # dependencies
 /node_modules
 
@@ -22,11 +23,9 @@ yarn.lock
 _logs
 .npm
 
-src/config/dev.js
 package-lock.json
 
 debug.log
-
 .nyc_output/
 coverage/
 test/*.log

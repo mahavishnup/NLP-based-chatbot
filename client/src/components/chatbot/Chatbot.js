@@ -9,6 +9,8 @@ import Message from './Message';
 import Card from './Card';
 import QuickReplies from './QuickReplies';
 
+const configkey = require("../../config/keys");
+
 const cookies = new Cookies();
 
 class Chatbot extends Component {
@@ -90,10 +92,14 @@ class Chatbot extends Component {
             };
 
             const res = await axios.post(
-                'https://dialogflow.googleapis.com/v2/projects/' + process.env.REACT_APP_GOOGLE_PROJECT_ID +
-                '/agent/sessions/' + process.env.REACT_APP_DF_SESSION_ID + cookies.get('userID') + ':detectIntent',
-                request,
-                config
+              "https://dialogflow.googleapis.com/v2/projects/" +
+                configkey.REACT_APP_GOOGLE_PROJECT_ID +
+                "/agent/sessions/" +
+                configkey.REACT_APP_DF_SESSION_ID +
+                cookies.get("userID") +
+                ":detectIntent",
+              request,
+              config
             );
 
             let  says = {};
