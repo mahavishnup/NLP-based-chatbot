@@ -2,7 +2,7 @@ import React from 'react';
 
 const Landing = () => (
     <div style={{ textAlign: 'center' }}>
-        <h1>Selling you great stuff!</h1>
+        <h3>Selling you great stuff!</h3>
         with the help of the chatbot
     </div>
 )
