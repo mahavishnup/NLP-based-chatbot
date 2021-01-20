@@ -12,7 +12,6 @@ import Message from './Message';
 import Card from './Card';
 import QuickReplies from './QuickReplies';
 
-const configkey = require("../../config/keys");
 const cookies = new Cookies();
 
 class Chatbot extends Component {
@@ -94,10 +93,7 @@ class Chatbot extends Component {
             };
 
             const res = await axios.post(
-              "https://dialogflow.googleapis.com/v2/projects/" +
-                configkey.REACT_APP_GOOGLE_PROJECT_ID +
-                "/agent/sessions/" +
-                configkey.REACT_APP_DF_SESSION_ID +
+              "https://dialogflow.googleapis.com/v2/projects/reactpageagent-ajlw/agent/sessions/react-bot-session" +
                 cookies.get("userID") +
                 ":detectIntent",
               request,
