@@ -10,6 +10,7 @@ yarn-debug.log*
 yarn-error.log*
 _logs
 .npm
+
 client/src/config/dev.js
 # misc
 .DS_Store
